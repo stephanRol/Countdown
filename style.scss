@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: "Amatic SC", cursive;
+    position: relative;
+    margin: 0;
+    background: url("img/andre-benz-Yb-n0JHlsWY-unsplash.jpg");
+    background-attachment: fixed; // Importante para que al heredar al glass-box este tome justo el pedaso sobre el cual se encuentra el glass-box
+    //background-size: 100vw 100vh;
+    background-size: cover;
+    background-position: center center; // Al hacer responsive la imagen se centra
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .glass-box {
+        position: absolute;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 50px;
+
+        //-------------------------GLASS EFFECT--------------------------------
+        //---------------------------------------------------------------------
+        background: inherit;
+        overflow: hidden; //recorta lo expandido
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+        &::before {
+            content: "";
+            position: absolute;
+            background: inherit;
+            top: 0px; //Establece hasta donde debe abarcar la pseudoclase
+            left: 0px; //Establece hasta donde debe abarcar la pseudoclase
+            right: 0px; //Establece hasta donde debe abarcar la pseudoclase
+            bottom: 0px; //Establece hasta donde debe abarcar la pseudoclase
+            box-shadow: inset 0 0 2000px rgba(149, 149, 149, 0.5);
+
+            filter: blur(8px); //Efecto de nublado
+            margin: -20px; //Expande 20 px fuera del div glass-box
+        }
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+
+        //----Glass Effect - Not supported: Firefox ----//
+        /*
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(5px);
+        */
+        //----------------------------------------------//
+
+        &-text {
+            color: white;
+            margin: 20px 0;
+            font-size: clamp(1.5rem, calc(1.5rem + 4vw), 6rem);
+            z-index: 5;
+            line-height: 1.6;
+        }
+
+        .countdown-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: clamp(1.5rem, calc(1.5rem + 2vw), 5rem);
+            text-align: center;
+            width: 70%;
+            color: white;
+            z-index: 10;
+            margin: 20px 0;
+
+            .big-text {
+                color: white;
+                font-size: clamp(5rem, calc(5rem + 4vw), 9rem);
+                font-weight: 900;
+            }
+            span {
+                font-size: clamp(0.1rem, calc(1.5rem + 0.7vw), 6rem);
+            }
+
+            .seconds-c,
+            #seconds {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .countdown-container {
+                flex-direction: column;
+
+                .seconds-c,
+                #seconds {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
