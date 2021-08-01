@@ -7,7 +7,7 @@ const newYears = '1 Jan 2022';
 const otherDate = '26 May 2021'
 
 function countdown() {
-    const newYearsDate = new Date(otherDate);
+    const newYearsDate = new Date(newYears);
     const currentDate = new Date();
 
     const secondsTotal = (newYearsDate.getTime() - currentDate.getTime()) / 1000;
